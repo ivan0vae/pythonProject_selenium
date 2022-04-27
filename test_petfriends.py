@@ -33,4 +33,10 @@ def test_my_pets():
       assert len(parts[0]) > 0
       assert len(parts[1]) > 0
 
-   
+   element = WebDriverWait(pytest.driver, 10).until(
+      EC.presence_of_element_located((By.CSS_SELECTOR, ".\\.col-sm-4.left")))
+   statistic = pytest.driver.find_elements_by_css_selector(".\\.col-sm-4.left")
+   images = pytest.driver.find_elements_by_css_selector('.table.table-hover img')
+   number = statistic[0].text.split('\n')
+   number = number[1].split(' ')
+   number = int(number[1])
